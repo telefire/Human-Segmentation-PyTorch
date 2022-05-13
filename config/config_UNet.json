@@ -27,7 +27,7 @@
 			"normalize": true,
 			"one_hot": false,
 			"shuffle": true,
-			"batch_size": 16,
+			"batch_size": 4,
 			"n_workers": 24,
 			"pin_memory": true
 		}
@@ -44,7 +44,7 @@
 			"normalize": true,
 			"one_hot": false,
 			"shuffle": false,
-			"batch_size": 16,
+			"batch_size": 4,
 			"n_workers": 24,
 			"pin_memory": true
 		}
@@ -59,9 +59,9 @@
 		}
 	},
 
-	"loss": "dice_loss",
+	"loss": "ce_loss",
 	"metrics": [
-		"miou"
+		"iou_with_sigmoid"
 	],
 
 	"lr_scheduler": {
@@ -73,8 +73,8 @@
 	},
 
 	"trainer": {
-		"epochs": 80,
-		"save_dir": "/workspace/checkpoints/",
+		"epochs": 120,
+		"save_dir": "checkpoints/",
 		"save_freq": null,
 		"verbosity": 2,
 		"monitor": "valid_loss",
@@ -83,6 +83,6 @@
 
 	"visualization":{
 		"tensorboardX": true,
-		"log_dir": "/workspace/checkpoints/"
+		"log_dir": "checkpoints/"
 	}
 }

@@ -28,8 +28,11 @@ def main(config, resume):
 
 	# Build model architecture
 	model = get_instance(module_arch, 'arch', config)
+	
 	img_sz = config["train_loader"]["args"]["resize"]
 	model.summary(input_shape=(3, img_sz, img_sz))
+
+	model = torch.nn.DataParallel(model, device_ids = [0]).cuda()
 
 	# Setup data_loader instances
 	train_loader = get_instance(module_data, 'train_loader', config).loader

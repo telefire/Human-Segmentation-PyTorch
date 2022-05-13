@@ -3,6 +3,7 @@
 #------------------------------------------------------------------------------
 import torch
 import torch.nn.functional as F
+import torch.nn as nn
 
 
 #------------------------------------------------------------------------------
@@ -14,7 +15,10 @@ def dice_loss(logits, targets, smooth=1.0):
 	targets: (torch.float32) shape (N, H, W), value {0,1,...,C-1}
 	"""
 	outputs = F.softmax(logits, dim=1)
+
 	targets = torch.unsqueeze(targets, dim=1)
+	targets = targets.cpu()
+
 	targets = torch.zeros_like(logits).scatter_(dim=1, index=targets.type(torch.int64), src=torch.tensor(1.0))
 
 	inter = outputs * targets

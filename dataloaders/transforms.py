@@ -72,7 +72,11 @@ def rotate_angle(image, label, angle_max):
 		(h, w) = image.shape[:2]
 		(cX, cY) = (w // 2, h // 2)
 
-		M = cv2.getRotationMatrix2D((cX, cY), angle, 1.0)
+		#print("angle type")
+		#print(type(angle))
+		#print(angle)
+
+		M = cv2.getRotationMatrix2D((cX, cY), float(angle), 1.0)
 		cos = np.abs(M[0, 0])
 		sin = np.abs(M[0, 1])
 

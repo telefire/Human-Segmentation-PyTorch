@@ -18,6 +18,9 @@ python measure_model.py
 * [Automatic Portrait Segmentation for Image Stylization](http://xiaoyongshen.me/webpage_portrait/index.html): 1800 images
 * [Supervisely Person](https://hackernoon.com/releasing-supervisely-person-dataset-for-teaching-machines-to-segment-humans-1f1fc1f28469): 5711 images
 
+* [Supervisely Person Refined from Kaggle](https://www.kaggle.com/datasets/tapakah68/supervisely-filtered-segmentation-person-dataset): 2667 images
+
+
 ## Set
 * Python3.6.x is used in this repository.
 * Clone the repository:
@@ -35,9 +38,9 @@ pip install -e models/pytorch-image-models
 ```
 
 ## Training
-* For training a network from scratch, for example DeepLab3+, use this command:
+* For training a network from scratch, for example UNet, use this command:
 ```
-python train.py --config config/config_DeepLab.json --device 0
+python train.py --config config/config_UNet.json --device 0
 ```
 where *config/config_DeepLab.json* is the configuration file which contains network, dataloader, optimizer, losses, metrics, and visualization configurations.
 * For resuming training the network from a checkpoint, use this command:
